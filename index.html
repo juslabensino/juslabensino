@@ -1,12 +1,94 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>JusLab Ensino — Aulas Interativas</title>
-<style>
-:root{--bg:#0a1018;--panel:#131e2c;--line:#30445e;--text:#f4f7fb;--muted:#aab6c5;--blue:#2588ff;--blue2:#68b0ff}
-*{box-sizing:border-box}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:radial-gradient(circle at 90% 0,rgba(37,136,255,.18),transparent 32rem),linear-gradient(145deg,#070b11,#111a27);color:var(--text);min-height:100vh}.wrap{max-width:1120px;margin:auto;padding:30px 20px 60px}.top{display:flex;justify-content:space-between;align-items:center;padding-bottom:24px;border-bottom:1px solid #263446}.brand{font-weight:900;letter-spacing:.08em}.brand span{color:var(--blue2)}.hero{padding:72px 0 40px}.kicker{color:var(--blue2);font-weight:800;text-transform:uppercase;letter-spacing:.16em;font-size:.8rem}h1{font-size:clamp(3rem,8vw,6.5rem);line-height:.92;letter-spacing:-.06em;margin:.4rem 0 1.2rem}.lead{max-width:760px;color:var(--muted);font-size:1.2rem;line-height:1.65}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}.card{display:block;text-decoration:none;color:inherit;background:linear-gradient(145deg,rgba(23,38,56,.97),rgba(13,21,31,.97));border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:24px;min-height:180px;transition:.2s}.card:hover{transform:translateY(-3px);border-color:var(--blue)}.card h2{margin:0 0 10px;font-size:1.6rem}.card p{color:var(--muted);line-height:1.55}.active{border-color:#31527a}.tag{display:inline-block;margin-top:16px;color:var(--blue2);font-weight:800;font-size:.85rem}.foot{margin-top:54px;padding-top:22px;border-top:1px solid #263446;font-size:.8rem;font-weight:900;letter-spacing:.08em}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="JusLab Ensino — experiências interativas para aprender, argumentar e decidir no Direito.">
+  <title>JusLab Ensino — Aprender. Argumentar. Decidir.</title>
+  <link rel="stylesheet" href="assets/css/juslab-tokens.css">
+  <link rel="stylesheet" href="assets/css/juslab-components.css">
 </head>
-<body><div class="wrap"><header class="top"><div class="brand">JUSLAB <span>ENSINO</span></div><div>Aulas Interativas</div></header><main><section class="hero"><div class="kicker">Plataforma multidisciplinar</div><h1>Aprender Direito<br>fazendo.</h1><p class="lead">Atividades interativas, estudos de caso e percursos de aprendizagem organizados por disciplina.</p></section><section class="grid"><a class="card active" href="materias/processo-civil/"><h2>Processo Civil</h2><p>Teoria Geral do Processo, processo de conhecimento, sistema recursal, cumprimento de sentença e procedimentos especiais.</p><span class="tag">ACESSAR DISCIPLINA →</span></a><div class="card"><h2>Direito Civil</h2><p>Área preparada para futuras atividades.</p><span class="tag">EM DESENVOLVIMENTO</span></div><div class="card"><h2>IED</h2><p>Introdução ao Estudo do Direito.</p><span class="tag">EM DESENVOLVIMENTO</span></div><div class="card"><h2>Antropologia</h2><p>Área preparada para futuras atividades.</p><span class="tag">EM DESENVOLVIMENTO</span></div></section></main><footer class="foot">PROF. FLÁVIO MARCELO GOMES</footer></div></body></html>
+<body>
+  <header class="jl-header">
+    <div class="jl-shell jl-header__inner">
+      <a class="jl-brand" href="./" aria-label="JusLab Ensino — página inicial">
+        <span class="jl-brand__mark" aria-hidden="true">J</span>
+        <span class="jl-brand__name">JusLab <span>Ensino</span></span>
+      </a>
+      <button class="jl-menu-button" type="button" data-jl-menu-button aria-expanded="false" aria-controls="main-menu">Menu</button>
+      <nav id="main-menu" class="jl-nav" data-jl-menu aria-label="Navegação principal">
+        <a href="#disciplinas" aria-current="page">Disciplinas</a>
+        <a href="#metodo">Método</a>
+        <a href="materias/processo-civil/">Processo Civil</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="jl-hero">
+      <div class="jl-shell jl-hero__grid">
+        <div>
+          <div class="jl-kicker">Ensino jurídico interativo</div>
+          <h1 class="jl-display">Aprender.<br><em>Argumentar.</em><br>Decidir.</h1>
+          <p class="jl-lead">Uma plataforma autoral de experiências interativas, estudos de caso e percursos de aprendizagem para transformar conteúdo jurídico em raciocínio aplicado.</p>
+          <div class="jl-actions">
+            <a class="jl-button jl-button--primary" href="materias/processo-civil/">Explorar Processo Civil →</a>
+            <a class="jl-button jl-button--ghost" href="#disciplinas">Ver disciplinas</a>
+          </div>
+        </div>
+        <aside class="jl-panel jl-hero-card" aria-label="Síntese do projeto">
+          <div class="jl-kicker">JusLab em construção</div>
+          <div class="jl-stat"><strong>01</strong> experiência interativa publicada</div>
+          <div class="jl-stat"><strong>04</strong> áreas acadêmicas planejadas</div>
+          <div class="jl-stat"><strong>27 anos</strong> de experiência docente em Processo Civil</div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="disciplinas" class="jl-section">
+      <div class="jl-shell">
+        <div class="jl-section__head">
+          <div><div class="jl-kicker">Navegação por disciplinas</div><h2>Escolha um percurso.</h2></div>
+          <p class="jl-lead">Cada área reunirá desafios, simuladores, casos reais e atividades progressivas.</p>
+        </div>
+        <div class="jl-grid">
+          <a class="jl-card jl-card--featured" href="materias/processo-civil/">
+            <span class="jl-card__number">01</span>
+            <h3>Processo Civil</h3>
+            <p>Teoria Geral do Processo, conhecimento, recursos, cumprimento de sentença e procedimentos especiais.</p>
+            <span class="jl-card__meta">Disciplina ativa →</span>
+          </a>
+          <article class="jl-card jl-card--disabled">
+            <span class="jl-card__number">02</span><h3>Direito Civil</h3><p>Parte geral, obrigações, contratos e novos percursos interativos.</p><span class="jl-card__meta">Em preparação</span>
+          </article>
+          <article class="jl-card jl-card--disabled">
+            <span class="jl-card__number">03</span><h3>Introdução ao Direito</h3><p>Conceitos fundamentais, fontes, interpretação e estrutura do pensamento jurídico.</p><span class="jl-card__meta">Em preparação</span>
+          </article>
+          <article class="jl-card jl-card--disabled">
+            <span class="jl-card__number">04</span><h3>Antropologia</h3><p>Cultura, alteridade, sociedade e leituras aplicadas à formação jurídica.</p><span class="jl-card__meta">Em preparação</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="metodo" class="jl-section">
+      <div class="jl-shell">
+        <div class="jl-section__head"><div><div class="jl-kicker">Método JusLab</div><h2>Do caso à decisão.</h2></div></div>
+        <div class="jl-grid">
+          <article class="jl-card"><span class="jl-card__number">01</span><h3>Compreender</h3><p>O aluno entra pela narrativa e reconhece o problema antes de receber a classificação jurídica.</p></article>
+          <article class="jl-card"><span class="jl-card__number">02</span><h3>Argumentar</h3><p>As escolhas exigem critérios, consequências e justificativas — não apenas memorização.</p></article>
+          <article class="jl-card"><span class="jl-card__number">03</span><h3>Decidir</h3><p>O percurso termina em uma solução aplicada, com feedback imediato e síntese conceitual.</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="jl-footer">
+    <div class="jl-shell jl-footer__inner">
+      <div class="jl-signature">Prof. Flávio Marcelo Gomes</div>
+      <div>JusLab Ensino · juslabensino.com.br</div>
+    </div>
+  </footer>
+  <script src="assets/js/juslab-site.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Modelo de experiência interativa do JusLab Ensino.">
+  <title>Nova experiência — JusLab Ensino</title>
+  <link rel="stylesheet" href="../../assets/css/juslab-tokens.css">
+  <link rel="stylesheet" href="../../assets/css/juslab-components.css">
+  <link rel="stylesheet" href="atividade.css">
+</head>
+<body>
+  <header class="jl-header">
+    <div class="jl-shell jl-header__inner">
+      <a class="jl-brand" href="../../" aria-label="JusLab Ensino — página inicial">
+        <span class="jl-brand__mark" aria-hidden="true">§</span>
+        <span class="jl-brand__name">JusLab <span>Ensino</span></span>
+      </a>
+      <button class="jl-menu-button" type="button" data-jl-menu-button aria-expanded="false" aria-controls="main-menu">Menu</button>
+      <nav id="main-menu" class="jl-nav" data-jl-menu aria-label="Navegação principal">
+        <a href="../../">Início</a>
+        <a href="#atividade" aria-current="page">Experiência</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="atividade">
+    <div class="jl-shell jl-breadcrumbs"><a href="../../">JusLab Ensino</a> / Nova experiência</div>
+    <section class="jl-hero">
+      <div class="jl-shell jl-hero__grid">
+        <div>
+          <div class="jl-kicker" id="experience-number">Experiência interativa</div>
+          <h1 class="jl-display" id="experience-title">Título da<br><em>atividade.</em></h1>
+          <p class="jl-lead" id="experience-lead">Apresente aqui o problema central e o convite ao raciocínio.</p>
+          <div class="jl-actions"><button class="jl-button jl-button--primary" id="start-button" type="button">Começar →</button></div>
+        </div>
+        <aside class="jl-panel jl-hero-card" aria-labelledby="activity-info-title">
+          <div class="jl-kicker">Ficha da experiência</div>
+          <h2 id="activity-info-title">Como participar</h2>
+          <div id="activity-info"></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="jl-section jl-activity-stage" id="activity-stage" hidden>
+      <div class="jl-shell">
+        <div class="jl-progress" aria-label="Progresso da atividade"><span id="progress-label">Etapa 1</span><div class="jl-progress__track"><i id="progress-bar"></i></div></div>
+        <div class="jl-panel jl-activity-panel" id="activity-content"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="jl-footer">
+    <div class="jl-shell jl-footer__inner"><div class="jl-signature">Prof. Flávio Marcelo Gomes</div><div>JusLab Ensino · Aprender. Argumentar. Decidir.</div></div>
+  </footer>
+
+  <script src="../../assets/js/juslab-site.js"></script>
+  <script src="dados.js"></script>
+  <script src="atividade.js"></script>
+</body>
+</html>

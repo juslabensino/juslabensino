@@ -1,0 +1,20 @@
+{
+  "disciplina": "Processo Civil",
+  "atualizadoEm": "2026-08-01",
+  "atividades": [
+    {
+      "id": "pc-001",
+      "numero": "001",
+      "titulo": "Competência em análise",
+      "subtitulo": "Competência absoluta e relativa",
+      "unidade": "01. Teoria Geral do Processo",
+      "tema": "Jurisdição e competência",
+      "tipo": "Experiência interativa",
+      "duracao": "12 a 18 minutos",
+      "nivel": "Intermediário",
+      "status": "publicado",
+      "objetivo": "Diferenciar competência absoluta e relativa a partir dos critérios e das consequências processuais.",
+      "url": "01-teoria-geral-do-processo/02-jurisdicao/competencia/competencia-absoluta-e-relativa/"
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#07131d">
+<meta name="description" content="JusLab Aula sobre a estrutura e a função das partes da petição inicial.">
+<title>JusLab Aula — Petição Inicial: Mapa Anatômico</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app" data-phase="intro">
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">JusLab Aula</span>
+      <h1>Petição inicial · mapa anatômico</h1>
+    </div>
+    <div class="top-actions">
+      <span class="mode-badge" id="modeBadge">Modo Aula</span>
+      <button class="ghost-button" type="button" id="fullscreenButton" aria-label="Ativar tela cheia">Tela cheia</button>
+      <button class="ghost-button" type="button" id="overviewButton">Visão geral</button>
+    </div>
+  </header>
+
+  <main class="stage" id="stage" aria-live="polite">
+    <div class="poster-shell" id="posterShell" aria-label="Infográfico da anatomia da petição inicial">
+      <img class="poster-base" id="posterBase" src="" alt="Mapa anatômico completo da petição inicial">
+      <img class="poster-highlight" id="highlight0" alt="" aria-hidden="true">
+      <img class="poster-highlight" id="highlight1" alt="" aria-hidden="true">
+      <img class="poster-highlight" id="highlight2" alt="" aria-hidden="true">
+      <img class="poster-highlight" id="highlight3" alt="" aria-hidden="true">
+      <svg class="connector-svg" viewBox="0 0 1055 1491" preserveAspectRatio="none" aria-hidden="true">
+        <path class="connector-path" id="connectorPath"></path>
+        <circle class="connector-dot" id="connectorStart" r="7"></circle>
+        <circle class="connector-dot" id="connectorEnd" r="7"></circle>
+      </svg>
+      <div class="focus-rect" id="rect0"></div>
+      <div class="focus-rect" id="rect1"></div>
+      <div class="focus-rect" id="rect2"></div>
+      <div class="focus-rect" id="rect3"></div>
+      <div class="scan-line"></div>
+
+      <button class="hotspot" data-jump="1" aria-label="Ir para Endereçamento" style="left:2%;top:17.1%;width:23%;height:13%"></button>
+      <button class="hotspot" data-jump="2" aria-label="Ir para Partes e qualificação" style="left:2%;top:28%;width:23%;height:14%"></button>
+      <button class="hotspot" data-jump="3" aria-label="Ir para Fatos" style="left:1.5%;top:42%;width:24%;height:27%"></button>
+      <button class="hotspot" data-jump="4" aria-label="Ir para Fundamentos jurídicos" style="left:1.5%;top:68%;width:24%;height:20%"></button>
+      <button class="hotspot" data-jump="5" aria-label="Ir para Pedidos" style="left:74%;top:18%;width:24%;height:31%"></button>
+      <button class="hotspot" data-jump="6" aria-label="Ir para Provas" style="left:75%;top:50%;width:23%;height:15%"></button>
+      <button class="hotspot" data-jump="7" aria-label="Ir para Valor da causa" style="left:75%;top:66%;width:23%;height:15%"></button>
+      <button class="hotspot" data-jump="8" aria-label="Ir para Fecho" style="left:75%;top:81%;width:23%;height:14%"></button>
+    </div>
+
+    <aside class="story-card side-right" id="storyCard" aria-labelledby="storyTitle">
+      <div class="story-eyebrow"><span class="story-number" id="storyNumber">1</span><span id="storyKicker">Anatomia da peça</span></div>
+      <h2 id="storyTitle"></h2>
+      <p class="story-lead" id="storyLead"></p>
+      <div class="teaching-point" id="teachingPoint"></div>
+      <div class="paper-excerpt" id="paperExcerpt"></div>
+      <div class="micro-grid" id="microGrid"></div>
+    </aside>
+
+    <section class="intro-card" id="introCard">
+      <div class="intro-kicker">Uma peça, oito funções</div>
+      <h2>A petição inicial é uma construção lógica.</h2>
+      <p>Primeiro, observe o mapa inteiro. Depois, acompanhe como cada parte da peça transforma fatos em tutela jurisdicional.</p>
+      <button class="primary-button" type="button" id="startButton">Iniciar percurso</button>
+    </section>
+
+    <section class="summary-card" id="summaryCard">
+      <div class="intro-kicker">Síntese final</div>
+      <h2>Oito partes formam uma única construção lógica.</h2>
+      <p>Cada parte cumpre uma função própria e todas se articulam para apresentar os fatos, demonstrar suas consequências jurídicas e formular a providência jurisdicional pretendida.</p>
+      <div class="sequence" aria-label="Sequência da petição inicial">
+        <span style="--chip:var(--blue)"><b>1</b>Endereçamento</span>
+        <span style="--chip:var(--green)"><b>2</b>Partes</span>
+        <span style="--chip:var(--orange)"><b>3</b>Fatos</span>
+        <span style="--chip:var(--violet)"><b>4</b>Fundamentos</span>
+        <span style="--chip:var(--red)"><b>5</b>Pedidos</span>
+        <span style="--chip:var(--teal)"><b>6</b>Provas</span>
+        <span style="--chip:var(--gold)"><b>7</b>Valor da causa</span>
+        <span style="--chip:var(--slate)"><b>8</b>Fecho</span>
+      </div>
+      <div class="summary-rule">Fatos + direito + pedido: a arquitetura essencial da demanda.</div>
+      <button class="primary-button" type="button" id="restartButton">Rever desde o início</button>
+    </section>
+
+    <div class="signature">Prof. Flávio Marcelo Gomes</div>
+  </main>
+
+  <footer class="controlbar">
+    <button class="nav-button" type="button" id="prevButton" aria-label="Voltar"><span aria-hidden="true">←</span><span>Voltar</span></button>
+    <div class="progress-wrap">
+      <div class="progress-meta"><span>Progresso</span><strong id="stepLabel">Visão geral</strong><span id="stepCount">0 / 8</span></div>
+      <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+    </div>
+    <button class="nav-button next" type="button" id="nextButton" aria-label="Avançar"><span id="nextLabel">Iniciar</span><span aria-hidden="true">→</span></button>
+  </footer>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

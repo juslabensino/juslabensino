@@ -1,6 +1,6 @@
 {
   "disciplina": "Processo Civil",
-  "atualizadoEm": "2026-08-01",
+  "atualizadoEm": "2026-08-04",
   "atividades": [
     {
       "id": "pc-001",
@@ -15,6 +15,20 @@
       "status": "publicado",
       "objetivo": "Diferenciar competência absoluta e relativa a partir dos critérios e das consequências processuais.",
       "url": "01-teoria-geral-do-processo/02-jurisdicao/competencia/competencia-absoluta-e-relativa/"
+    },
+    {
+      "id": "pc-002",
+      "numero": "002",
+      "titulo": "Petição inicial — mapa anatômico",
+      "subtitulo": "As oito funções da petição inicial",
+      "unidade": "02. Processo de Conhecimento",
+      "tema": "Fase postulatória — petição inicial",
+      "tipo": "JusLab Aula",
+      "duracao": "10 a 15 minutos",
+      "nivel": "Introdutório",
+      "status": "publicado",
+      "objetivo": "Compreender a função e a articulação do endereçamento, da qualificação, dos fatos, dos fundamentos jurídicos, dos pedidos, das provas, do valor da causa e do fecho.",
+      "url": "02-processo-de-conhecimento/01-fase-postulatoria/peticao-inicial/mapa-anatomico/"
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "disciplina": "Processo Civil",
-  "atualizadoEm": "2026-08-04",
+  "atualizadoEm": "2026-08-06",
   "atividades": [
     {
       "id": "pc-001",
@@ -29,6 +29,20 @@
       "status": "publicado",
       "objetivo": "Compreender a função e a articulação do endereçamento, da qualificação, dos fatos, dos fundamentos jurídicos, dos pedidos, das provas, do valor da causa e do fecho.",
       "url": "02-processo-de-conhecimento/01-fase-postulatoria/peticao-inicial/mapa-anatomico/"
+    },
+    {
+      "id": "pc-003",
+      "numero": "003",
+      "titulo": "O que o Judiciário precisa fazer?",
+      "subtitulo": "Natureza dos pedidos declaratório, constitutivo e condenatório",
+      "unidade": "01. Teoria Geral do Processo",
+      "tema": "Ação — natureza dos pedidos",
+      "tipo": "Experiência interativa",
+      "duracao": "15 minutos",
+      "nivel": "Introdutório",
+      "status": "publicado",
+      "objetivo": "Distinguir a natureza dos pedidos a partir da necessidade jurídica apresentada no caso.",
+      "url": "01-teoria-geral-do-processo/03-acao/natureza-dos-pedidos/"
     }
   ]
 }

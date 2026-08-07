@@ -43,6 +43,20 @@
       "status": "publicado",
       "objetivo": "Distinguir a natureza dos pedidos a partir da necessidade jurídica apresentada no caso.",
       "url": "01-teoria-geral-do-processo/03-acao/natureza-dos-pedidos/"
+    },
+    {
+      "id": "pc-004",
+      "numero": "004",
+      "titulo": "Arquitetura dos pedidos",
+      "subtitulo": "Cumulação própria, sucessiva, alternativa, eventual e estruturas combinadas",
+      "unidade": "01. Teoria Geral do Processo",
+      "tema": "Ação — cumulação de pedidos",
+      "tipo": "Experiência interativa",
+      "duracao": "15 a 20 minutos",
+      "nivel": "Intermediário",
+      "status": "publicado",
+      "objetivo": "Organizar visualmente os pedidos de uma petição inicial e distinguir suas relações de independência, dependência, alternatividade e subsidiariedade.",
+      "url": "01-teoria-geral-do-processo/03-acao/cumulacao-de-pedidos/"
     }
   ]
 }

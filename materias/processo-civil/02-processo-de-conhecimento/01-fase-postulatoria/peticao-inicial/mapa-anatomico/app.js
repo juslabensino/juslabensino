@@ -59,7 +59,7 @@
       n:7,title:'Audiência de conciliação ou mediação',kicker:'Abertura à solução consensual',accent:'#28afa8',side:'left',
       lead:'A petição inicial deve indicar a opção do autor pela realização ou não de audiência de conciliação ou mediação.',
       point:'Aqui o autor informa sua posição sobre a tentativa de solução consensual do conflito.',
-      excerpt:'<p><strong>4. DO PEDIDO DE REALIZAÇÃO DE AUDIÊNCIA DE MEDIAÇÃO E CONCILIAÇÃO</strong></p><p>Nos termos do art. 319, VII, do CPC, o autor manifesta interesse na realização de audiência de conciliação ou de mediação, como meio adequado para a solução consensual da controvérsia.</p>',
+      excerpt:'<p><strong>DO PEDIDO DE REALIZAÇÃO DE AUDIÊNCIA DE MEDIAÇÃO E CONCILIAÇÃO</strong></p><p>Nos termos do art. 319, VII, do CPC, o autor manifesta interesse na realização de audiência de conciliação ou de mediação, como meio adequado para a solução consensual da controvérsia.</p>',
       micro:[['Base legal','Art. 319, VII, do CPC.'],['Finalidade','Favorecer a solução consensual da controvérsia.']],
       rects:[[781,986,225,192],[247,1205,510,103]],
       path:'M783 1054 H770 Q755 1054 755 1071 V1242 Q755 1255 734 1255',start:[783,1054],end:[734,1255]
@@ -105,7 +105,7 @@
   const highlights = [...document.querySelectorAll('.poster-highlight')];
   const posterBase = document.getElementById('posterBase');
   async function loadPoster(){
-    const files=['poster-01.txt','poster-02.txt','poster-03.txt','poster-04.txt','poster-05.txt','poster-06.txt'];
+    const files=['poster-01.txt?v=3','poster-02.txt?v=3','poster-03.txt?v=3','poster-04.txt?v=3','poster-05.txt?v=3','poster-06.txt?v=3'];
     const parts=await Promise.all(files.map(f=>fetch(f).then(r=>{if(!r.ok)throw new Error('Imagem indisponível');return r.text()})));
     const src='data:image/jpeg;base64,'+parts.join('');
     posterBase.src=src; highlights.forEach(img=>img.src=src);

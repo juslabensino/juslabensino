@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>JusLab Aula — Etapa Liminar · Trilha em Camadas Paralelas</title>
+<style>
+:root{
+  --bg:#061018; --off:#f1ede5; --muted:#9eb1ae; --teal:#789f99;
+  --bronze:#b7844b; --red:#9f5f53; --green:#789583;
+  --paper:#e8dfd0; --paper2:#d5cab8; --ink:#14212a;
+  --line:rgba(183,132,75,.34); --shadow:0 40px 100px rgba(0,0,0,.5)
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;background:var(--bg);color:var(--off)}
+body{
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:
+    radial-gradient(circle at 72% 20%,rgba(36,58,70,.25),transparent 34%),
+    linear-gradient(145deg,#040a0f,#07131c 55%,#061018)
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px),
+    linear-gradient(rgba(255,255,255,.012) 1px,transparent 1px);
+  background-size:46px 46px;
+  mask-image:linear-gradient(to bottom,rgba(0,0,0,.75),transparent 82%)
+}
+button{font:inherit}
+.serif,h1,h2,h3,.headline,.question,.option strong,.trail-label,.outcome-title{
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif
+}
+.app{height:100%;position:relative}
+.topbar{
+  position:absolute;inset:0 0 auto;height:66px;z-index:60;
+  display:flex;align-items:center;justify-content:space-between;padding:0 28px;
+  border-bottom:1px solid rgba(183,132,75,.13);
+  background:linear-gradient(to bottom,rgba(3,8,12,.92),rgba(3,8,12,.25),transparent)
+}
+.brand{display:flex;align-items:center;gap:12px;font-family:"Iowan Old Style",Georgia,serif;letter-spacing:.22em;font-size:13px}
+.brand-mark{width:17px;height:28px;border-left:2px solid var(--bronze);border-right:2px solid var(--bronze);position:relative}
+.brand-mark:before,.brand-mark:after{content:"";position:absolute;left:-5px;right:-5px;height:2px;background:var(--bronze)}
+.brand-mark:before{top:0}.brand-mark:after{bottom:0}
+.scene-name{font-size:11px;letter-spacing:.15em;color:#8ca09d}
+.signature{font-family:"Iowan Old Style",Georgia,serif;color:#d0b28e;font-size:14px}
+.progress{position:absolute;top:66px;left:0;right:0;height:2px;background:rgba(255,255,255,.04);z-index:61}
+.progress i{display:block;height:100%;width:8%;background:linear-gradient(90deg,var(--bronze),var(--teal));transition:width .55s ease}
+
+.world{position:absolute;inset:68px 0 0;overflow:hidden;overflow:clip;perspective:1500px}
+.world:after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 0 50%,rgba(0,0,0,.36) 84%,rgba(0,0,0,.58) 100%)}
+.arch{position:absolute;left:0;top:0;bottom:0;width:11vw;opacity:.09;background:linear-gradient(90deg,rgba(183,132,75,.75) 0 2px,transparent 2px 19px,rgba(183,132,75,.4) 19px 21px,transparent 21px)}
+
+.paper-zone{
+  position:absolute;left:50%;top:48%;width:min(550px,39vw);aspect-ratio:1/1.28;z-index:10;
+  transition:left .8s cubic-bezier(.2,.8,.2,1),top .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1),opacity .45s,filter .45s
+}
+.paper{
+  position:absolute;inset:0;color:var(--ink);padding:38px 42px;
+  background:
+    linear-gradient(140deg,rgba(255,255,255,.38),transparent 34%),
+    repeating-linear-gradient(0deg,rgba(75,54,30,.035),rgba(75,54,30,.035) 1px,transparent 1px,transparent 4px),
+    linear-gradient(135deg,var(--paper),var(--paper2));
+  border:1px solid rgba(255,255,255,.28);box-shadow:var(--shadow);
+  transform:translate(-50%,-50%) rotateX(4deg) rotateZ(-2deg)
+}
+.paper:before{content:"";position:absolute;left:16px;right:-11px;bottom:-11px;height:17px;background:#cfc3b1;filter:brightness(.86);z-index:-1;box-shadow:0 9px 20px rgba(0,0,0,.28)}
+.doc-title{text-align:center;font-family:"Iowan Old Style",Georgia,serif;font-size:18px;letter-spacing:.08em;margin-bottom:25px}
+.line{height:7px;background:rgba(19,32,42,.16);margin:9px 0;border-radius:8px}
+.w92{width:92%}.w82{width:82%}.w68{width:68%}.w54{width:54%}.w42{width:42%}
+.mark{position:absolute;opacity:0;transition:.4s;border:1px solid rgba(159,95,83,.7);background:rgba(159,95,83,.07)}
+.mark.m1{left:32px;right:44px;top:138px;height:62px}.mark.m2{left:32px;right:68px;top:222px;height:48px}
+.paper.defect .mark{opacity:1}
+.paper.regularized:after,.paper.rejected:after,.paper.merit:after,.paper.received:after{
+  position:absolute;right:28px;bottom:28px;padding:8px 11px;letter-spacing:.14em;font-size:11px;transform:rotate(-6deg);border:2px solid
+}
+.paper.regularized:after{content:"REGULARIZADA";color:rgba(83,119,97,.8);border-color:rgba(120,149,131,.62)}
+.paper.rejected:after{content:"INDEFERIDA";color:rgba(139,73,65,.84);border-color:rgba(159,95,83,.72)}
+.paper.merit:after{content:"MÉRITO";color:rgba(139,73,65,.84);border-color:rgba(159,95,83,.72)}
+.paper.received:after{content:"RECEBIDA";color:rgba(73,116,111,.86);border-color:rgba(120,159,153,.7)}
+
+.overlay{position:absolute;inset:0;z-index:20;pointer-events:none}
+.scene{position:absolute;inset:0;opacity:0;transform:translateY(14px);transition:opacity .45s,transform .5s;pointer-events:none}
+.scene.active{opacity:1;transform:none;pointer-events:auto}
+.scene:not(.active),.scene:not(.active) *{pointer-events:none!important}
+.kicker{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--bronze);margin-bottom:8px}
+.headline{font-size:clamp(34px,4.7vw,70px);line-height:1.03;font-weight:400}
+.subline{font-family:"Iowan Old Style",Georgia,serif;color:var(--muted);font-size:clamp(18px,1.55vw,24px);line-height:1.43;margin-top:10px;max-width:780px}
+.divider{width:260px;height:1px;background:linear-gradient(90deg,var(--bronze),transparent);margin:17px 0}
+.question{font-size:clamp(44px,5.3vw,76px);text-align:center;line-height:1.04;margin:0 0 18px}
+
+.copy-left{position:absolute;left:8vw;top:9vh;width:44vw}
+.copy-center{position:absolute;left:8vw;right:8vw;top:8vh;text-align:center}
+.copy-center .subline{margin-left:auto;margin-right:auto}
+.copy-center .divider{margin-left:auto;margin-right:auto;background:linear-gradient(90deg,transparent,var(--bronze),transparent)}
+.choice-area{position:absolute;left:8vw;right:8vw;bottom:17vh}
+.copy-left,.copy-center,.choice-area,.side-panel{isolation:isolate}
+.copy-left:before,.copy-center:before,.choice-area:before,.side-panel:before{
+  content:"";position:absolute;pointer-events:none;z-index:-1
+}
+body[data-state="intro"] .copy-left:before{
+  inset:-5vh -7vw -6vh -4vw;
+  background:radial-gradient(ellipse at 38% 48%,rgba(3,10,15,.94) 0,rgba(3,10,15,.8) 48%,rgba(3,10,15,.36) 68%,transparent 82%);
+  filter:blur(4px)
+}
+body[data-state="intro"] .headline,
+body[data-state="intro"] .subline,
+body[data-state="aptitude"] .copy-center,
+body[data-state="aptitude"] .choice-area,
+body[data-state="meritcheck"] .copy-center,
+body[data-state="meritcheck"] .choice-area,
+body[data-state="recebimento"] .copy-center{
+  text-shadow:0 3px 18px rgba(0,0,0,.9),0 1px 3px rgba(0,0,0,.9)
+}
+body[data-state="aptitude"] .copy-center:before,
+body[data-state="meritcheck"] .copy-center:before,
+body[data-state="recebimento"] .copy-center:before{
+  inset:-3vh 7vw -3vh;
+  background:radial-gradient(ellipse at center,rgba(3,10,15,.88),rgba(3,10,15,.55) 55%,transparent 78%);
+  filter:blur(5px)
+}
+body[data-state="aptitude"] .choice-area:before,
+body[data-state="meritcheck"] .choice-area:before{
+  inset:-4vh 2vw -3vh;
+  background:radial-gradient(ellipse at center,rgba(3,10,15,.94),rgba(3,10,15,.76) 55%,rgba(3,10,15,.28) 74%,transparent 88%);
+  filter:blur(5px)
+}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:920px;margin:auto}
+.option{
+  pointer-events:auto;cursor:pointer;border:0;border-top:1px solid var(--line);background:transparent;color:var(--off);
+  padding:17px 14px 13px;text-align:center;transition:.22s
+}
+.option:hover{background:rgba(255,255,255,.025);transform:translateY(-2px)}
+.option strong{display:block;font-size:clamp(34px,3.8vw,53px);font-weight:400}
+.option small{display:block;color:#aab8b6;font-size:clamp(14px,1.15vw,18px);margin-top:5px}
+.option.yes strong{color:#94b8b2}.option.no strong{color:#c99470}
+
+.side-panel{position:absolute;right:7vw;top:12vh;width:41vw}
+.outcome-title{font-size:clamp(40px,4.7vw,66px);line-height:1.03}
+.small{color:#aebdbb;font-size:clamp(16px,1.3vw,21px);line-height:1.5}
+.badge{display:inline-block;font-size:11px;letter-spacing:.15em;text-transform:uppercase;border:1px solid currentColor;padding:6px 9px;margin-bottom:12px}
+.badge.red{color:#c47b70}.badge.green{color:#8dac99}
+.reasons{margin-top:16px;display:grid;gap:8px}
+.reason{padding:9px 0 9px 16px;border-left:1px solid var(--line)}
+.reason b{font-family:"Iowan Old Style",Georgia,serif;font-weight:400;font-size:clamp(20px,1.8vw,27px)}
+.reason span{display:block;color:#aab9b7;font-size:14px;margin-top:2px;line-height:1.38}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.action{
+  pointer-events:auto;cursor:pointer;border:1px solid rgba(183,132,75,.42);background:rgba(183,132,75,.07);
+  color:var(--off);padding:11px 15px;font-size:14px
+}
+.action.teal{border-color:rgba(120,159,153,.45);background:rgba(120,159,153,.07)}
+.action.red{border-color:rgba(159,95,83,.5);background:rgba(159,95,83,.08)}
+
+/* CTA de abertura */
+.examine{
+  pointer-events:auto;cursor:pointer;margin-top:28px;display:inline-flex;align-items:center;gap:14px;
+  border:1px solid rgba(183,132,75,.72);
+  background:linear-gradient(135deg,rgba(183,132,75,.18),rgba(120,159,153,.08));
+  color:var(--off);padding:16px 23px 16px 17px;
+  font-family:"Iowan Old Style",Georgia,serif;font-size:20px;letter-spacing:.01em;
+  box-shadow:0 10px 30px rgba(0,0,0,.22),inset 0 0 30px rgba(183,132,75,.035);
+  transition:transform .25s,background .25s,box-shadow .25s
+}
+.examine:hover{transform:translateY(-2px);background:linear-gradient(135deg,rgba(183,132,75,.25),rgba(120,159,153,.12));box-shadow:0 14px 36px rgba(0,0,0,.28)}
+.examine .glass{
+  width:38px;height:38px;border-radius:50%;display:grid;place-items:center;
+  border:1px solid rgba(183,132,75,.52);background:rgba(6,16,24,.52);color:#d2aa78
+}
+.examine svg{width:22px;height:22px}
+
+/* TRILHA EM CAMADAS PARALELAS */
+.journey{position:absolute;left:50%;bottom:41px;transform:translateX(-50%);width:min(1160px,84vw);height:128px;z-index:34;pointer-events:none;opacity:.95}
+.journey-caption{position:absolute;left:2%;top:1px;color:#647a77;font-size:9px;letter-spacing:.18em;text-transform:uppercase}
+.main-track{position:absolute;inset:0 3%}
+.main-line{position:absolute;left:0;right:0;top:57px;height:2px;background:rgba(129,149,146,.25)}
+.trunk-fill{position:absolute;left:0;top:-1px;height:4px;width:0;background:linear-gradient(90deg,var(--bronze),var(--teal));box-shadow:0 0 15px rgba(120,159,153,.18);transition:width .65s ease}
+.jnode{position:absolute;top:48px;transform:translateX(-50%);text-align:center;color:#667b78;min-width:112px;transition:.4s}
+.jnode .dot,.layer-node .dot{width:10px;height:10px;border-radius:50%;margin:0 auto 8px;background:#40534f;transition:.4s}
+.jnode .lab,.layer-node .lab{font-family:"Iowan Old Style",Georgia,serif;font-size:12px;white-space:nowrap}
+.jnode.reached{color:#afc0bd}.jnode.reached .dot{background:var(--teal);box-shadow:0 0 15px rgba(120,159,153,.22)}
+.jnode.current{color:var(--off);transform:translateX(-50%) translateY(-1px)}
+.jnode.current .dot{width:14px;height:14px;margin-top:-2px;margin-bottom:6px;background:var(--bronze);box-shadow:0 0 0 6px rgba(183,132,75,.08),0 0 18px rgba(183,132,75,.3)}
+.j-distrib{left:0}.j-adm{left:31%}.j-receive{left:74%}.j-pros{left:100%}
+
+.layer-line{position:absolute;height:1px;background:rgba(129,149,146,.16)}
+.layer-fill{position:absolute;left:0;top:-1px;height:3px;width:0;transition:width .65s ease}
+.layer-node{position:absolute;transform:translateX(-50%);text-align:center;opacity:.68;transition:.4s}
+.layer-node.current,.layer-node.reached{opacity:1}
+.layer-node.current .dot{box-shadow:0 0 0 5px rgba(183,132,75,.07),0 0 15px currentColor}
+.parallel-connector{position:absolute;width:1px;opacity:0;transition:opacity .4s,transform .55s;transform:scaleY(0)}
+.parallel-connector.visible{opacity:1;transform:scaleY(1)}
+
+/* Faixa superior curta: exceção meritória */
+.merit-layer{position:absolute;inset:0;opacity:0;transition:opacity .4s}
+.merit-layer.visible{opacity:1}
+.merit-layer.pending{opacity:.5}
+.merit-layer .layer-line{left:61%;top:19px;width:19%;background:rgba(159,95,83,.22)}
+.merit-layer .layer-fill{background:linear-gradient(90deg,rgba(159,95,83,.52),var(--red))}
+.merit-layer.visible .layer-fill{width:100%}
+.merit-layer.pending .layer-fill{width:0}
+.merit-node{left:80%;top:2px;color:#c18478}
+.merit-node .lab{font-size:11px;line-height:1.05;margin-bottom:5px}
+.merit-node .dot{margin-bottom:0;background:var(--red)}
+.merit-connector{left:61%;top:19px;height:39px;transform-origin:bottom;background:linear-gradient(to top,rgba(159,95,83,.54),rgba(159,95,83,.2))}
+
+/* Faixa inferior: desvio formal */
+.formal-layer{position:absolute;inset:0;opacity:0;transition:opacity .4s}
+.formal-layer.visible{opacity:1}
+.formal-layer .layer-line{left:31%;top:99px;width:30%;background:rgba(120,149,131,.19)}
+.formal-layer .layer-fill{background:linear-gradient(90deg,rgba(120,149,131,.48),var(--green))}
+.formal-layer.correction .layer-fill{width:48%}
+.formal-layer.return .layer-fill,.formal-layer.reject .layer-fill{width:100%}
+.formal-node{top:90px;color:#8da99a}
+.formal-node .lab{font-size:11px}
+.formal-node.current .dot{background:var(--bronze)}
+.formal-node.reached .dot{background:var(--green);box-shadow:0 0 13px rgba(120,149,131,.28)}
+.correction-node{left:45%}.indeferimento-node{left:61%;color:#c18478}
+.indeferimento-node.current .dot,.indeferimento-node.reached .dot{background:var(--red);box-shadow:0 0 13px rgba(159,95,83,.24)}
+.formal-drop{left:31%;top:57px;height:43px;transform-origin:top;background:linear-gradient(to bottom,rgba(120,149,131,.24),rgba(120,149,131,.62))}
+.formal-return{left:61%;top:57px;height:43px;transform-origin:bottom;background:linear-gradient(to top,rgba(120,149,131,.58),rgba(120,149,131,.2))}
+
+.footer{position:absolute;left:22px;right:22px;bottom:15px;z-index:42;display:flex;justify-content:space-between;align-items:center;color:#819391;font-size:11px}
+.hints{display:flex;gap:14px}.key{border:1px solid rgba(255,255,255,.14);padding:3px 6px;border-radius:3px;color:#b6c1bf}
+.footer button{background:transparent;border:1px solid rgba(255,255,255,.12);color:#9dadab;padding:6px 9px;cursor:pointer}
+.footer button:disabled{opacity:.28;cursor:default}
+
+.map-wrap{position:absolute;left:6vw;right:6vw;top:7vh;bottom:12vh;display:flex;flex-direction:column;justify-content:center}
+.map-title{font-family:"Iowan Old Style",Georgia,serif;font-size:clamp(34px,4.4vw,62px);text-align:center}
+.map-sub{text-align:center;color:var(--muted);font-family:"Iowan Old Style",Georgia,serif;font-size:clamp(17px,1.4vw,22px);margin-top:7px}
+.map{max-width:1170px;margin:28px auto 0;width:100%;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.node{padding:17px;border-top:1px solid var(--line);min-height:108px;background:linear-gradient(180deg,rgba(255,255,255,.025),transparent)}
+.node .tag{font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:#c1a079;margin-bottom:6px}
+.node h3{font-family:"Iowan Old Style",Georgia,serif;font-size:clamp(21px,1.9vw,29px);font-weight:400;margin:0 0 6px}
+.node p{color:#aab8b6;margin:0;font-size:13px;line-height:1.38}
+.node.green{border-color:var(--green)}.node.red{border-color:var(--red)}.node.teal{border-color:var(--teal)}
+
+@media(max-width:900px){
+  .topbar{height:59px;padding:0 16px}.progress{top:59px}.world{inset:61px 0 0}.scene-name{display:none}.signature{font-size:12px}
+  .paper-zone{width:min(430px,68vw)}
+  .copy-left{left:7vw;top:6vh;width:86vw;text-align:center}.copy-left .subline{margin:auto}.copy-left .divider{margin-left:auto;margin-right:auto;background:linear-gradient(90deg,transparent,var(--bronze),transparent)}
+  .copy-center{left:5vw;right:5vw;top:6vh}.choice-area{left:5vw;right:5vw;bottom:16vh}
+  .side-panel{left:6vw;right:6vw;top:auto;bottom:12vh;width:auto;background:linear-gradient(180deg,rgba(6,16,24,.2),rgba(6,16,24,.9) 14%,rgba(6,16,24,.97));padding-top:30px;text-shadow:0 2px 12px rgba(0,0,0,.82)}
+  .journey{width:91vw;bottom:38px;height:114px}.main-line{top:52px}.jnode{top:44px;min-width:78px}.jnode .lab{font-size:10px}
+  .merit-layer .layer-line{top:17px}.merit-connector{top:17px;height:36px}.merit-node{top:1px}.merit-node .lab{font-size:9px}
+  .formal-layer .layer-line{top:88px}.formal-node{top:80px}.formal-node .lab{font-size:9px}.formal-drop,.formal-return{top:52px;height:37px}
+}
+@media(max-width:520px){
+  .brand{font-size:11px}.signature{display:none}.paper-zone{width:78vw}.paper{padding:26px 28px}
+  .headline{font-size:35px}.subline{font-size:16px}.question{font-size:36px;margin-bottom:11px}.options{gap:9px}.option strong{font-size:31px}.option small{font-size:12px}
+  .choice-area{bottom:15vh}.outcome-title{font-size:36px}.reason b{font-size:20px}.reason span{font-size:12px}
+  .examine{font-size:18px;padding:13px 18px 13px 14px}.examine .glass{width:34px;height:34px}
+  .journey{width:95vw;bottom:34px;height:105px}.journey-caption{display:none}.main-line{top:47px}
+  .jnode{top:40px;min-width:59px}.jnode .lab{font-size:8px}.jnode .dot,.layer-node .dot{width:8px;height:8px;margin-bottom:5px}
+  .merit-layer .layer-line{top:14px}.merit-connector{top:14px;height:34px}.merit-node{top:0}.merit-node .lab{font-size:7.5px}
+  .formal-layer .layer-line{top:82px}.formal-node{top:75px}.formal-node .lab{font-size:8px}.formal-drop,.formal-return{top:47px;height:36px}
+  .map{grid-template-columns:1fr 1fr}.node h3{font-size:19px}.node p{font-size:11px}.hints{display:none}.footer{left:12px;right:12px}
+  body[data-state="intro"] .paper-zone{left:50%!important;top:61%!important}
+  body[data-state="intro"] .copy-left:before{inset:-3vh -5vw -5vh;background:linear-gradient(180deg,rgba(3,10,15,.95) 0,rgba(3,10,15,.88) 64%,rgba(3,10,15,.48) 86%,transparent)}
+  body[data-state="aptitude"] .choice-area:before,
+  body[data-state="meritcheck"] .choice-area:before{inset:-3vh -3vw -2vh;background:linear-gradient(180deg,transparent,rgba(3,10,15,.84) 16%,rgba(3,10,15,.96) 44%,rgba(3,10,15,.82) 86%,transparent)}
+  body[data-state="aptitude"] .copy-center:before,
+  body[data-state="meritcheck"] .copy-center:before{inset:-2vh -3vw -2vh;background:radial-gradient(ellipse at center,rgba(3,10,15,.9),rgba(3,10,15,.5) 68%,transparent 88%)}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark"></span><span>JUSLAB AULA</span></div>
+    <div class="scene-name" id="sceneName">CENA 1 · DISTRIBUIÇÃO</div>
+    <div class="signature">Prof. Flávio Marcelo Gomes</div>
+  </header>
+  <div class="progress"><i id="progressBar"></i></div>
+
+  <div class="world">
+    <div class="arch"></div>
+
+    <div class="paper-zone" id="paperZone">
+      <div class="paper" id="paper">
+        <div class="doc-title">PETIÇÃO INICIAL</div>
+        <div class="line w68"></div><div class="line w92"></div><div class="line w82"></div><div style="height:15px"></div>
+        <div class="line w92"></div><div class="line w82"></div><div class="line w92"></div><div class="line w68"></div><div style="height:14px"></div>
+        <div class="line w92"></div><div class="line w82"></div><div class="line w54"></div><div style="height:14px"></div>
+        <div class="line w82"></div><div class="line w92"></div><div class="line w42"></div>
+        <div class="mark m1"></div><div class="mark m2"></div>
+      </div>
+    </div>
+
+    <main class="overlay">
+      <section class="scene" data-state="intro">
+        <div class="copy-left">
+          <div class="kicker">Etapa liminar do procedimento comum</div>
+          <div class="headline">A petição inicial foi distribuída e encaminhada ao juiz.</div>
+          <div class="divider"></div>
+          <div class="subline">Agora começa o juízo de admissibilidade.</div>
+          <button class="examine" data-go="aptitude">
+            <span class="glass" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <circle cx="10.5" cy="10.5" r="6.25" stroke="currentColor" stroke-width="1.7"/>
+                <path d="M15.2 15.2L20 20" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span>Examinar a petição</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="scene" data-state="aptitude">
+        <div class="copy-center">
+          <div class="kicker">Primeiro ponto de decisão</div>
+          <div class="headline">Qual caminho seguir?</div>
+          <div class="subline">O juiz verifica os requisitos da petição inicial e os documentos indispensáveis.</div>
+        </div>
+        <div class="choice-area">
+          <div class="question">A petição supera a admissibilidade?</div>
+          <div class="options">
+            <button class="option yes" data-go="meritcheck"><strong>SIM</strong><small>A análise avança.</small></button>
+            <button class="option no" data-go="correction"><strong>NÃO</strong><small>A inicial sai do eixo para correção.</small></button>
+          </div>
+        </div>
+      </section>
+
+      <section class="scene" data-state="correction">
+        <div class="side-panel">
+          <div class="kicker">Admissibilidade não superada · desvio de correção</div>
+          <div class="outcome-title">O defeito pode ser corrigido?</div>
+          <div class="divider"></div>
+          <div class="small">Se o vício for sanável, o juiz deve indicar precisamente o que será corrigido e conceder <strong>15 dias</strong> para emenda ou complementação.</div>
+          <div class="actions">
+            <button class="action teal" data-go="emenda">SIM · Emenda</button>
+            <button class="action red" data-go="indeferimento">NÃO · Indeferimento</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="scene" data-state="emenda">
+        <div class="side-panel">
+          <span class="badge green">correção da inicial</span>
+          <div class="outcome-title">Emenda — 15 dias</div>
+          <div class="divider"></div>
+          <div class="small">A petição permanece no desvio lateral enquanto o autor corrige o vício apontado pelo juiz.</div>
+          <div class="actions">
+            <button class="action teal" data-go="regularized">A inicial foi regularizada</button>
+            <button class="action red" data-go="indeferimento">A ordem não foi atendida</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="scene" data-state="regularized">
+        <div class="side-panel">
+          <span class="badge green">retorno ao eixo</span>
+          <div class="outcome-title">A inicial foi regularizada.</div>
+          <div class="divider"></div>
+          <div class="small">Superado o defeito, a petição retorna à linha principal e segue para o próximo filtro inicial.</div>
+          <div class="actions"><button class="action teal" data-go="meritcheck">Retornar ao fluxo principal →</button></div>
+        </div>
+      </section>
+
+      <section class="scene" data-state="indeferimento">
+        <div class="side-panel">
+          <span class="badge red">sentença terminativa</span>
+          <div class="outcome-title">Indeferimento da petição inicial</div>
+          <div class="divider"></div>
+          <div class="small">O processo termina sem julgamento de quem tem razão no conflito.</div>
+          <div class="reasons">
+            <div class="reason"><b>Inépcia</b><span>Defeito na formulação da demanda.</span></div>
+            <div class="reason"><b>Ilegitimidade manifesta</b><span>A parte não deve ocupar aquela posição processual.</span></div>
+            <div class="reason"><b>Falta de interesse processual</b><span>Ausência de necessidade ou adequação da tutela.</span></div>
+            <div class="reason"><b>Não atendimento da emenda</b><span>A correção determinada não foi realizada.</span></div>
+          </div>
+          <div class="actions"><button class="action" data-go="aptitude">Rever o percurso</button><button class="action teal" data-go="final">Ver síntese</button></div>
+        </div>
+      </section>
+
+      <section class="scene" data-state="meritcheck">
+        <div class="copy-center">
+          <div class="kicker">Admissibilidade superada · segundo filtro</div>
+          <div class="headline">A demanda pode terminar antes da citação?</div>
+          <div class="subline">Agora o problema já não está na petição. O juiz verifica se existe hipótese de improcedência liminar do pedido.</div>
+        </div>
+        <div class="choice-area">
+          <div class="question">Já é possível rejeitar o pedido desde logo?</div>
+          <div class="options">
+            <button class="option no" data-go="improcedencia"><strong>SIM</strong><small>Improcedência liminar.</small></button>
+            <button class="option yes" data-go="recebimento"><strong>NÃO</strong><small>A petição é recebida.</small></button>
+          </div>
+        </div>
+      </section>
+
+      <section class="scene" data-state="improcedencia">
+        <div class="side-panel">
+          <span class="badge red">sentença definitiva</span>
+          <div class="outcome-title">Improcedência liminar do pedido</div>
+          <div class="divider"></div>
+          <div class="small">A petição superou a admissibilidade, mas o próprio pedido pode ser rejeitado antes da citação.</div>
+          <div class="reasons">
+            <div class="reason"><b>Precedentes do art. 332</b><span>Súmula STF/STJ, repetitivos, IRDR, IAC ou súmula local sobre direito local.</span></div>
+            <div class="reason"><b>Prescrição</b><span>Quando verificável de plano.</span></div>
+            <div class="reason"><b>Decadência</b><span>Quando verificável de plano.</span></div>
+          </div>
+          <div class="actions"><button class="action teal" data-go="final">Ver síntese</button></div>
+        </div>
+      </section>
+
+      <section class="scene" data-state="recebimento">
+        <div class="copy-center">
+          <div class="kicker">Caminho principal</div>
+          <div class="headline">A petição inicial é recebida.</div>
+          <div class="subline">Superados os filtros iniciais, não há motivo para impedir o prosseguimento.</div>
+          <div class="actions" style="justify-content:center"><button class="action teal" data-go="prosseguimento">Prosseguir →</button></div>
+        </div>
+      </section>
+
+      <section class="scene" data-state="prosseguimento">
+        <div class="side-panel">
+          <span class="badge green">caminho principal</span>
+          <div class="outcome-title">O processo prossegue.</div>
+          <div class="divider"></div>
+          <div class="small">O juiz determina a <strong>citação</strong> e, quando cabível, a <strong>audiência de conciliação ou mediação</strong>.</div>
+          <div class="actions"><button class="action teal" data-go="final">Ver síntese</button></div>
+        </div>
+      </section>
+
+      <section class="scene" data-state="final">
+        <div class="map-wrap">
+          <div class="kicker" style="text-align:center">Síntese</div>
+          <div class="map-title">O caminho normal e seus desvios.</div>
+          <div class="map-sub">A correção retorna ao eixo; indeferimento e improcedência liminar encerram o percurso.</div>
+          <div class="map">
+            <div class="node"><div class="tag">linha principal</div><h3>Distribuição</h3><p>A petição chega ao juiz.</p></div>
+            <div class="node"><div class="tag">1º filtro</div><h3>Admissibilidade</h3><p>Requisitos e documentos indispensáveis.</p></div>
+            <div class="node teal"><div class="tag">após os filtros</div><h3>Recebimento</h3><p>A petição é recebida.</p></div>
+            <div class="node teal"><div class="tag">caminho normal</div><h3>Prosseguimento</h3><p>Citação e audiência, quando cabível.</p></div>
+            <div class="node green"><div class="tag">desvio com retorno</div><h3>Correção</h3><p>Regularizada, a inicial retorna ao fluxo.</p></div>
+            <div class="node red"><div class="tag">sentença terminativa</div><h3>Indeferimento</h3><p>Extinção sem resolução do mérito.</p></div>
+            <div class="node red"><div class="tag">sentença definitiva</div><h3>Improcedência liminar</h3><p>Rejeição do pedido antes da citação.</p></div>
+          </div>
+          <div class="actions" style="justify-content:center"><button class="action" data-go="intro">Recomeçar</button></div>
+        </div>
+      </section>
+    </main>
+
+    <div class="journey" id="journey">
+      <div class="journey-caption">Percurso</div>
+      <div class="main-track">
+        <div class="main-line"><div class="trunk-fill" id="trunkFill"></div></div>
+        <div class="jnode j-distrib" id="jDistrib"><div class="dot"></div><div class="lab">Distribuição</div></div>
+        <div class="jnode j-adm" id="jAdm"><div class="dot"></div><div class="lab">Admissibilidade</div></div>
+        <div class="jnode j-receive" id="jReceive"><div class="dot"></div><div class="lab">Recebimento</div></div>
+        <div class="jnode j-pros" id="jPros"><div class="dot"></div><div class="lab">Prosseguimento</div></div>
+      </div>
+
+      <div class="merit-layer" id="meritLayer">
+        <div class="layer-line"><div class="layer-fill"></div></div>
+        <div class="layer-node merit-node" id="meritNode"><div class="lab">Improcedência<br>liminar</div><div class="dot"></div></div>
+      </div>
+      <div class="parallel-connector merit-connector" id="meritConnector"></div>
+
+      <div class="formal-layer" id="formalLayer">
+        <div class="layer-line"><div class="layer-fill"></div></div>
+        <div class="layer-node formal-node correction-node" id="correctionNode"><div class="dot"></div><div class="lab">Correção</div></div>
+        <div class="layer-node formal-node indeferimento-node" id="indeferimentoNode"><div class="dot"></div><div class="lab">Indeferimento</div></div>
+      </div>
+      <div class="parallel-connector formal-drop" id="formalDrop"></div>
+      <div class="parallel-connector formal-return" id="formalReturn"></div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="hints"><span><span class="key">←</span> voltar</span><span><span class="key">→</span> adiantar</span><span><span class="key">Esc</span> início</span></div>
+    <div><button id="backBtn" aria-label="Voltar" title="Voltar ao movimento anterior">← Voltar</button> <button id="forwardBtn" aria-label="Adiantar" title="Adiantar ao movimento seguinte">Adiantar →</button> <button data-go="intro">Início</button></div>
+  </footer>
+</div>
+
+<script>
+const stateMeta = {
+  intro:          {label:'CENA 1 · DISTRIBUIÇÃO', progress:7,  paper:'',            pos:['64%','48%',1,0], trail:'distribution'},
+  aptitude:       {label:'CENA 2 · ANÁLISE DA ADMISSIBILIDADE', progress:23, paper:'', pos:['50%','43%',.72,0], trail:'admissibility'},
+  correction:     {label:'CENA 3 · CORREÇÃO DA INICIAL', progress:37, paper:'defect', pos:['28%','48%',.98,-1], trail:'correction'},
+  emenda:         {label:'CENA 4 · EMENDA', progress:46, paper:'defect',           pos:['28%','48%',.96,-1], trail:'correction'},
+  regularized:    {label:'CENA 5 · RETORNO AO EIXO', progress:55, paper:'regularized', pos:['28%','48%',.94,-1], trail:'return'},
+  indeferimento:  {label:'CENA 5 · INDEFERIMENTO', progress:55, paper:'rejected',  pos:['28%','48%',.9,-3], trail:'reject'},
+  meritcheck:     {label:'CENA 6 · SEGUNDO FILTRO', progress:67, paper:'',          pos:['50%','43%',.7,0], trail:'meritcheck'},
+  improcedencia:  {label:'CENA 7 · IMPROCEDÊNCIA LIMINAR', progress:79, paper:'merit', pos:['28%','48%',.92,-1], trail:'improcedencia'},
+  recebimento:    {label:'CENA 7 · RECEBIMENTO', progress:82, paper:'received',     pos:['50%','62%',.72,0], trail:'receipt'},
+  prosseguimento: {label:'CENA 8 · PROSSEGUIMENTO', progress:92, paper:'received',  pos:['28%','48%',.9,1], trail:'proceed'},
+  final:          {label:'CENA FINAL · SÍNTESE', progress:100, paper:'',            pos:['50%','58%',.52,0], trail:'final'}
+};
+
+let current='intro';
+let historyStack=[];
+let forwardStack=[];
+
+const scenes=[...document.querySelectorAll('.scene')];
+const paper=document.getElementById('paper');
+const paperZone=document.getElementById('paperZone');
+const sceneName=document.getElementById('sceneName');
+const progressBar=document.getElementById('progressBar');
+const jDistrib=document.getElementById('jDistrib');
+const jAdm=document.getElementById('jAdm');
+const jReceive=document.getElementById('jReceive');
+const jPros=document.getElementById('jPros');
+const trunkFill=document.getElementById('trunkFill');
+const formalLayer=document.getElementById('formalLayer');
+const formalDrop=document.getElementById('formalDrop');
+const formalReturn=document.getElementById('formalReturn');
+const correctionNode=document.getElementById('correctionNode');
+const indeferimentoNode=document.getElementById('indeferimentoNode');
+const meritLayer=document.getElementById('meritLayer');
+const meritConnector=document.getElementById('meritConnector');
+const meritNode=document.getElementById('meritNode');
+const backBtn=document.getElementById('backBtn');
+const forwardBtn=document.getElementById('forwardBtn');
+
+function resetTrail(){
+  [jDistrib,jAdm,jReceive,jPros,correctionNode,indeferimentoNode,meritNode].forEach(n=>n.classList.remove('reached','current'));
+  trunkFill.style.width='0%';
+  formalLayer.className='formal-layer';
+  formalDrop.className='parallel-connector formal-drop';
+  formalReturn.className='parallel-connector formal-return';
+  meritLayer.className='merit-layer';
+  meritConnector.className='parallel-connector merit-connector';
+}
+function markMain(which){
+  if(which==='distribution'){
+    jDistrib.classList.add('current');
+    trunkFill.style.width='0%';
+  }
+  if(which==='admissibility'){
+    jDistrib.classList.add('reached');jAdm.classList.add('current');
+    trunkFill.style.width='31%';
+  }
+  if(which==='meritcheck'){
+    jDistrib.classList.add('reached');jAdm.classList.add('reached');
+    trunkFill.style.width='61%';
+  }
+  if(which==='receipt'){
+    jDistrib.classList.add('reached');jAdm.classList.add('reached');jReceive.classList.add('current');
+    trunkFill.style.width='74%';
+  }
+  if(which==='proceed'){
+    jDistrib.classList.add('reached');jAdm.classList.add('reached');jReceive.classList.add('reached');jPros.classList.add('current','reached');
+    trunkFill.style.width='100%';
+  }
+}
+function showFormal(mode,terminalCurrent=true){
+  formalLayer.classList.add('visible',mode);
+  formalDrop.classList.add('visible');
+  if(mode==='correction') correctionNode.classList.add('current');
+  if(mode==='return'){
+    correctionNode.classList.add('reached');
+    formalReturn.classList.add('visible');
+  }
+  if(mode==='reject'){
+    correctionNode.classList.add('reached');
+    indeferimentoNode.classList.add(terminalCurrent?'current':'reached');
+  }
+}
+function showMerit(terminalCurrent=true){
+  meritLayer.classList.add('visible');
+  meritConnector.classList.add('visible');
+  meritNode.classList.add(terminalCurrent?'current':'reached');
+}
+function showMeritPending(){
+  meritLayer.classList.add('visible','pending');
+  meritConnector.classList.add('visible');
+}
+function renderTrail(mode){
+  resetTrail();
+  if(mode==='distribution') markMain('distribution');
+  if(mode==='admissibility') markMain('admissibility');
+  if(mode==='correction'){
+    markMain('admissibility');jAdm.classList.remove('current');jAdm.classList.add('reached');showFormal('correction');
+  }
+  if(mode==='return'){
+    markMain('meritcheck');showFormal('return');
+  }
+  if(mode==='reject'){
+    markMain('admissibility');jAdm.classList.remove('current');jAdm.classList.add('reached');showFormal('reject');
+  }
+  if(mode==='meritcheck'){
+    markMain('meritcheck');showMeritPending();
+  }
+  if(mode==='improcedencia'){
+    markMain('meritcheck');showMerit();
+  }
+  if(mode==='receipt') markMain('receipt');
+  if(mode==='proceed') markMain('proceed');
+  if(mode==='final') renderFinalTrail();
+}
+function renderFinalTrail(){
+  const path=new Set([...historyStack,current]);
+
+  if(path.has('intro')) jDistrib.classList.add('reached');
+  if(path.has('aptitude')) jAdm.classList.add('reached');
+
+  if(path.has('prosseguimento')){
+    jReceive.classList.add('reached');jPros.classList.add('reached');trunkFill.style.width='100%';
+  }else if(path.has('recebimento')){
+    jReceive.classList.add('reached');trunkFill.style.width='74%';
+  }else if(path.has('meritcheck')||path.has('improcedencia')){
+    trunkFill.style.width='61%';
+  }else if(path.has('aptitude')){
+    trunkFill.style.width='31%';
+  }
+
+  const usedCorrection=['correction','emenda','regularized','indeferimento'].some(state=>path.has(state));
+  if(usedCorrection){
+    const formalMode=path.has('indeferimento')?'reject':path.has('regularized')?'return':'correction';
+    showFormal(formalMode,false);
+  }
+  if(path.has('improcedencia')) showMerit(false);
+}
+function render(state, push=true){
+  if(!stateMeta[state]) return;
+  if(push && state!==current){
+    historyStack.push(current);
+    forwardStack=[];
+  }
+  current=state;
+  document.body.dataset.state=state;
+
+  scenes.forEach(s=>{
+    const isActive=s.dataset.state===state;
+    s.classList.toggle('active',isActive);
+    s.inert=!isActive;
+    s.setAttribute('aria-hidden',String(!isActive));
+  });
+  const m=stateMeta[state];
+  sceneName.textContent=m.label;
+  progressBar.style.width=m.progress+'%';
+
+  paper.className='paper'+(m.paper?' '+m.paper:'');
+  paperZone.style.left=m.pos[0];
+  paperZone.style.top=m.pos[1];
+  paperZone.style.transform=`scale(${m.pos[2]}) rotate(${m.pos[3]}deg)`;
+  paperZone.style.opacity=state==='final'?'.12':'1';
+  paperZone.style.filter=state==='final'?'blur(1px)':'none';
+
+  renderTrail(m.trail);
+  backBtn.disabled=historyStack.length===0;
+  forwardBtn.disabled=forwardStack.length===0;
+}
+function back(){
+  const prev=historyStack.pop();
+  if(!prev) return;
+  forwardStack.push(current);
+  render(prev,false);
+}
+function forward(){
+  const next=forwardStack.pop();
+  if(!next) return;
+  historyStack.push(current);
+  render(next,false);
+}
+document.addEventListener('click',e=>{
+  const btn=e.target.closest('[data-go]');
+  if(btn){
+    e.preventDefault();
+    if(btn.dataset.go==='intro'){
+      historyStack=[];
+      forwardStack=[];
+      render('intro',false);
+      return;
+    }
+    render(btn.dataset.go,true);
+  }
+});
+backBtn.addEventListener('click',back);
+forwardBtn.addEventListener('click',forward);
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){historyStack=[];forwardStack=[];render('intro',false)}
+  if(e.key==='ArrowLeft')back();
+  if(e.key==='ArrowRight')forward();
+  if(current==='aptitude'&&(e.key==='s'||e.key==='S'))render('meritcheck');
+  if(current==='aptitude'&&(e.key==='n'||e.key==='N'))render('correction');
+  if(current==='meritcheck'&&(e.key==='s'||e.key==='S'))render('improcedencia');
+  if(current==='meritcheck'&&(e.key==='n'||e.key==='N'))render('recebimento');
+});
+render('intro',false);
+</script>
+</body>
+</html>

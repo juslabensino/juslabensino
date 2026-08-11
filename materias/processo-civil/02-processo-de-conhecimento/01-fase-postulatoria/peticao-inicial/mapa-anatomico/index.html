@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#07131d">
 <meta name="description" content="JusLab Aula sobre a estrutura e a função das partes da petição inicial.">
 <title>JusLab Aula — Petição Inicial: Mapa Anatômico</title>
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=2">
 </head>
 <body>
 <div id="app" data-phase="intro">
@@ -29,7 +29,7 @@
       <img class="poster-highlight" id="highlight1" alt="" aria-hidden="true">
       <img class="poster-highlight" id="highlight2" alt="" aria-hidden="true">
       <img class="poster-highlight" id="highlight3" alt="" aria-hidden="true">
-      <svg class="connector-svg" viewBox="0 0 1055 1491" preserveAspectRatio="none" aria-hidden="true">
+      <svg class="connector-svg" viewBox="0 0 1024 1536" preserveAspectRatio="none" aria-hidden="true">
         <path class="connector-path" id="connectorPath"></path>
         <circle class="connector-dot" id="connectorStart" r="7"></circle>
         <circle class="connector-dot" id="connectorEnd" r="7"></circle>
@@ -40,14 +40,15 @@
       <div class="focus-rect" id="rect3"></div>
       <div class="scan-line"></div>
 
-      <button class="hotspot" data-jump="1" aria-label="Ir para Endereçamento" style="left:2%;top:17.1%;width:23%;height:13%"></button>
-      <button class="hotspot" data-jump="2" aria-label="Ir para Partes e qualificação" style="left:2%;top:28%;width:23%;height:14%"></button>
-      <button class="hotspot" data-jump="3" aria-label="Ir para Fatos" style="left:1.5%;top:42%;width:24%;height:27%"></button>
-      <button class="hotspot" data-jump="4" aria-label="Ir para Fundamentos jurídicos" style="left:1.5%;top:68%;width:24%;height:20%"></button>
-      <button class="hotspot" data-jump="5" aria-label="Ir para Pedidos" style="left:74%;top:18%;width:24%;height:31%"></button>
-      <button class="hotspot" data-jump="6" aria-label="Ir para Provas" style="left:75%;top:50%;width:23%;height:15%"></button>
-      <button class="hotspot" data-jump="7" aria-label="Ir para Valor da causa" style="left:75%;top:66%;width:23%;height:15%"></button>
-      <button class="hotspot" data-jump="8" aria-label="Ir para Fecho" style="left:75%;top:81%;width:23%;height:14%"></button>
+      <button class="hotspot" data-jump="1" aria-label="Ir para Endereçamento" style="left:1.5%;top:18.7%;width:21%;height:8.5%"></button>
+      <button class="hotspot" data-jump="2" aria-label="Ir para Partes e qualificação" style="left:1.5%;top:29.5%;width:21%;height:12.5%"></button>
+      <button class="hotspot" data-jump="3" aria-label="Ir para Fatos" style="left:1.5%;top:44%;width:22%;height:24%"></button>
+      <button class="hotspot" data-jump="4" aria-label="Ir para Fundamentos jurídicos" style="left:1.5%;top:69%;width:22%;height:18%"></button>
+      <button class="hotspot" data-jump="5" aria-label="Ir para Pedidos" style="left:76%;top:22%;width:22%;height:17%"></button>
+      <button class="hotspot" data-jump="6" aria-label="Ir para Provas" style="left:76%;top:50%;width:22%;height:12%"></button>
+      <button class="hotspot" data-jump="7" aria-label="Ir para Audiência de conciliação ou mediação" style="left:76%;top:64%;width:22%;height:12%"></button>
+      <button class="hotspot" data-jump="8" aria-label="Ir para Valor da causa" style="left:76%;top:78%;width:22%;height:9%"></button>
+      <button class="hotspot" data-jump="9" aria-label="Ir para Fecho" style="left:76%;top:87%;width:22%;height:9%"></button>
     </div>
 
     <aside class="story-card side-right" id="storyCard" aria-labelledby="storyTitle">
@@ -60,7 +61,7 @@
     </aside>
 
     <section class="intro-card" id="introCard">
-      <div class="intro-kicker">Uma peça, oito funções</div>
+      <div class="intro-kicker">Uma peça, nove funções</div>
       <h2>A petição inicial é uma construção lógica.</h2>
       <p>Primeiro, observe o mapa inteiro. Depois, acompanhe como cada parte da peça transforma fatos em tutela jurisdicional.</p>
       <button class="primary-button" type="button" id="startButton">Iniciar percurso</button>
@@ -68,17 +69,18 @@
 
     <section class="summary-card" id="summaryCard">
       <div class="intro-kicker">Síntese final</div>
-      <h2>Oito partes formam uma única construção lógica.</h2>
+      <h2>Nove partes formam uma única construção lógica.</h2>
       <p>Cada parte cumpre uma função própria e todas se articulam para apresentar os fatos, demonstrar suas consequências jurídicas e formular a providência jurisdicional pretendida.</p>
       <div class="sequence" aria-label="Sequência da petição inicial">
         <span style="--chip:var(--blue)"><b>1</b>Endereçamento</span>
         <span style="--chip:var(--green)"><b>2</b>Partes</span>
         <span style="--chip:var(--orange)"><b>3</b>Fatos</span>
-        <span style="--chip:var(--violet)"><b>4</b>Fundamentos</span>
+        <span style="--chip:var(--violet)"><b>4</b>Fundamentos jurídicos</span>
         <span style="--chip:var(--red)"><b>5</b>Pedidos</span>
-        <span style="--chip:var(--teal)"><b>6</b>Provas</span>
-        <span style="--chip:var(--gold)"><b>7</b>Valor da causa</span>
-        <span style="--chip:var(--slate)"><b>8</b>Fecho</span>
+        <span style="--chip:var(--cyan)"><b>6</b>Provas</span>
+        <span style="--chip:var(--teal)"><b>7</b>Audiência de conciliação ou mediação</span>
+        <span style="--chip:var(--gold)"><b>8</b>Valor da causa</span>
+        <span style="--chip:var(--slate)"><b>9</b>Fecho</span>
       </div>
       <div class="summary-rule">Fatos + direito + pedido: a arquitetura essencial da demanda.</div>
       <button class="primary-button" type="button" id="restartButton">Rever desde o início</button>
@@ -90,12 +92,12 @@
   <footer class="controlbar">
     <button class="nav-button" type="button" id="prevButton" aria-label="Voltar"><span aria-hidden="true">←</span><span>Voltar</span></button>
     <div class="progress-wrap">
-      <div class="progress-meta"><span>Progresso</span><strong id="stepLabel">Visão geral</strong><span id="stepCount">0 / 8</span></div>
+      <div class="progress-meta"><span>Progresso</span><strong id="stepLabel">Visão geral</strong><span id="stepCount">0 / 9</span></div>
       <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
     </div>
     <button class="nav-button next" type="button" id="nextButton" aria-label="Avançar"><span id="nextLabel">Iniciar</span><span aria-hidden="true">→</span></button>
   </footer>
 </div>
-<script src="app.js"></script>
+<script src="app.js?v=2"></script>
 </body>
 </html>

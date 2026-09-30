@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+ <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+ <meta name="author" content="Prof. Flávio Marcelo Gomes"><meta name="theme-color" content="#164c50">
+ <title>JusLab · Aula 1 — Fechamento · V2.13</title>
+ <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="block2.css">
+ <link rel="stylesheet" href="ordalia.css">
+ <link rel="stylesheet" href="mesopotamia.css">
+ <link rel="stylesheet" href="grecia.css">
+ <link rel="stylesheet" href="roma.css">
+ <link rel="stylesheet" href="medieval.css">
+ <link rel="stylesheet" href="moderno.css">
+ <link rel="stylesheet" href="comercio.css">
+ <link rel="stylesheet" href="codificacao.css">
+ <link rel="stylesheet" href="igualdade.css">
+ <link rel="stylesheet" href="fechamento.css">
+ <script src="assets/d3.min.js" defer></script><script src="assets/topojson-client.min.js" defer></script><script src="assets/land-data.js" defer></script>
+ <script src="model.js" defer></script><script src="moderno-model.js" defer></script><script src="comercio-model.js" defer></script><script src="codificacao-model.js" defer></script><script src="igualdade-model.js" defer></script><script src="fechamento-model.js" defer></script><script src="writing-bridge.js" defer></script><script src="block2.js" defer></script><script src="ordalia.js" defer></script><script src="mesopotamia.js" defer></script><script src="grecia.js" defer></script><script src="roma.js" defer></script><script src="medieval.js" defer></script><script src="moderno.js" defer></script><script src="comercio.js" defer></script><script src="codificacao.js" defer></script><script src="igualdade.js" defer></script><script src="fechamento.js" defer></script><script src="app.js" defer></script>
+</head>
+<body>
+ <main id="presentation">
+  <section id="stage" data-beat="0" aria-label="Cena de aprendizagem">
+   <div id="visual">
+    <div id="photographs" class="surface"><figure class="photo-layer"><img src="assets/permission.png" alt="Uma criança pede autorização para usar um estojo."></figure><figure class="photo-layer"><img src="assets/traffic.png" alt=""></figure></div>
+    <div id="writing-bridge" class="surface" aria-label="Da assinatura contemporânea à escrita na argila">
+     <img id="bridge-contract" src="assets/contract.png" alt="Mão segurando uma caneta para assinar um documento.">
+     <img id="bridge-scribe" src="assets/escriba.jpg" alt="Mão do escriba com instrumento de escrita e tabuleta de argila, seguida da revelação do ambiente.">
+    </div>
+    <div id="composition" class="surface" aria-label="Situações cotidianas reunidas numa composição">
+     <figure data-photo="permission"><img src="assets/permission.png" alt="Pedir autorização antes de usar."></figure>
+     <figure data-photo="traffic"><img src="assets/traffic.png" alt="Parar diante do sinal vermelho."></figure>
+     <figure data-photo="access"><img src="assets/access.png" alt="Identificar-se para entrar."></figure>
+     <figure data-photo="family"><img src="assets/family.png" alt="Avisar a família sobre um atraso."></figure>
+     <figure data-photo="religion"><img src="assets/religion.png" alt="Respeitar o momento de oração."></figure>
+     <figure data-photo="contract"><img src="assets/contract.png" alt="Assumir um compromisso."></figure>
+    </div>
+    <div id="video-scene" class="surface"><div id="video-lens">
+     <video id="return-video" src="assets/devolucao.mp4" poster="assets/return.png" muted playsinline preload="auto" aria-label="Uma estudante devolve um celular encontrado à proprietária."></video>
+     <img id="held-frame" src="assets/devolucao-final.jpg" alt="As estudantes após a devolução do aparelho." hidden>
+    </div></div>
+   </div>
+   <section id="copy" aria-live="polite" aria-atomic="true"><h1 id="headline"></h1><p id="support" hidden></p><p id="credit" hidden></p><button id="video-start" hidden>Reproduzir o gesto ▷</button></section>
+  </section>
+  <header><span>Bloco 1 · Um mundo de normas</span><span>Prof. Flávio Marcelo Gomes</span><button id="fullscreen" aria-label="Tela cheia" title="Tela cheia · F">⛶</button></header>
+  <footer id="controls">
+   <div class="transport"><button id="previous" aria-label="Batida anterior">←</button><button id="next" aria-label="Próxima batida">→</button><label class="timeline-wrap"><span class="sr-only">Navegar pelas batidas</span><input id="timeline" type="range" min="0" max="22" value="0" step="1"></label><output id="counter" for="timeline"></output><button id="play-video" hidden>Pausar vídeo</button><button id="replay" hidden aria-label="Rever o vídeo">↻</button><button id="clean">Ocultar</button></div>
+   <nav id="chapters" aria-label="Cenas do Bloco 1"><button data-scene="1">1 · Cotidiano</button><button data-scene="2">2 · Regras</button><button data-scene="3">3 · Pergunta</button><button data-scene="4">4 · Uma conduta</button><button data-scene="5">5 · Síntese</button><button data-scene="6">6 · História</button></nav>
+   <p class="hint">Setas / Page Down: avançar · P: pausar vídeo · R: rever vídeo · H: controles · Reconstruções ilustrativas por IA · Cartografia: Natural Earth</p>
+  </footer>
+  <button id="restore" hidden>Mostrar controles</button><p id="notice" role="alert" hidden></p>
+ </main>
+ <noscript>Ative o JavaScript para conduzir esta apresentação.</noscript>
+</body>
+</html>

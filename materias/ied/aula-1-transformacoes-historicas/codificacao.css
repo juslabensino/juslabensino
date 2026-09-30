@@ -1,0 +1,49 @@
+/* Scoped to the new block. Documentary images are not stretched or invented. */
+#codification-scene{background:var(--paper)}
+body:not(.clean) #stage[data-mode="codificacao"]{bottom:var(--cod-controls-height,150px)}
+body:has(#stage[data-mode="codificacao"]) #chapters{flex-wrap:nowrap;overflow-x:auto;gap:14px}
+body:has(#stage[data-mode="codificacao"]) #chapters button{width:auto;flex-shrink:0}
+body:has(#stage[data-mode="codificacao"]) #controls{max-height:25vh;overflow-y:auto}
+#codification-scene>img,#codification-scene>video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transform-origin:center;opacity:0;visibility:hidden;transition:opacity .85s ease,visibility .85s;backface-visibility:hidden}
+#codification-scene>.active{opacity:1;visibility:visible;z-index:1}
+#codification-scene>img[data-shot="napoleao"]{left:43%;width:57%;object-fit:contain}
+#codification-scene>img[data-shot="codigo"]{left:49%;top:6%;width:47%;height:88%;object-fit:contain}
+#stage[data-layout^="cd-"] #copy{left:3%;right:3%;width:auto;top:77%;bottom:auto;padding:clamp(18px,1.35vw,26px)}
+#stage[data-layout^="cd-"] h1{font-size:clamp(32px,2.7vw,52px);line-height:1.09}
+#stage[data-layout^="cd-"] #support{font-size:clamp(25px,1.8vw,35px);line-height:1.2;margin-top:12px}
+#stage[data-layout^="cd-"] #support::before{margin-bottom:12px}
+#stage[data-layout^="cd-"] #credit{font-size:clamp(21px,1.45vw,28px);line-height:1.3;margin-top:16px}
+#stage[data-layout="cd-document"] #copy,#stage[data-layout="cd-question"] #copy{top:24%;left:3%;right:auto;width:43%}
+#stage[data-layout="cd-question"] #support:not([hidden]){animation:answer-reveal .45s ease-out}
+#stage[data-layout="cd-video"] h1{font-size:clamp(32px,2.45vw,47px)}
+#codification-start{position:absolute;z-index:7;left:4%;top:6%;padding:12px 20px;color:var(--white);background:var(--green);border:1px solid var(--gold);font-size:22px;min-height:46px}
+@media(min-width:701px) and (max-aspect-ratio:3/2){
+ #codification-scene>img,#codification-scene>video{object-fit:contain}
+ #stage[data-layout^="cd-"] #copy{top:76%}
+ #stage[data-layout="cd-document"] #copy,#stage[data-layout="cd-question"] #copy{top:22%;width:44%}
+ #stage[data-layout^="cd-"] h1{font-size:34px}
+ #stage[data-layout^="cd-"] #support{font-size:26px}
+}
+@media(max-width:700px) and (orientation:portrait){
+ body:not(.clean) #stage[data-mode="codificacao"] #copy{top:48%}
+ body:not(.clean) #stage[data-mode="codificacao"] h1{font-size:28px}
+ body:not(.clean) #stage[data-mode="codificacao"] #support{font-size:21px}
+ body:not(.clean) #stage[data-mode="codificacao"] #credit{font-size:16px}
+ #codification-scene>img,#codification-scene>video{object-fit:contain}
+ #codification-scene>img[data-shot="napoleao"],#codification-scene>img[data-shot="codigo"]{inset:0;width:100%;height:100%}
+ #stage[data-layout^="cd-"] #copy{top:49%;left:5%;right:5%;width:auto;padding:20px}
+ #stage[data-layout^="cd-"] h1{font-size:30px}
+ #stage[data-layout^="cd-"] #support{font-size:23px}
+ #stage[data-layout^="cd-"] #credit{font-size:18px}
+ #codification-start{top:6%;font-size:18px}
+}
+@media(max-height:550px) and (orientation:landscape){
+ #codification-scene>img,#codification-scene>video{object-fit:contain}
+ #stage[data-layout^="cd-"] #copy{top:73%;padding:10px 16px}
+ #stage[data-layout^="cd-"] h1{font-size:25px}
+ #stage[data-layout^="cd-"] #support{font-size:19px;margin-top:6px}
+ #stage[data-layout^="cd-"] #support::before{margin-bottom:6px}
+ #stage[data-layout^="cd-"] #credit{font-size:17px;margin-top:8px}
+ #stage[data-layout="cd-document"] #copy,#stage[data-layout="cd-question"] #copy{top:15%;left:3%;width:43%}
+ #codification-start{top:12%;font-size:18px;padding:8px 12px}
+}

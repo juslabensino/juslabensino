@@ -1,0 +1,36 @@
+/* New block only: full-frame action, stable questions, captions below key objects. */
+#commerce-scene{background:var(--paper)}
+#commerce-scene>img,#commerce-scene>video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transform-origin:center;opacity:0;visibility:hidden;transition:opacity .8s ease,visibility .8s;backface-visibility:hidden}
+#commerce-scene>.active{opacity:1;visibility:visible;z-index:1}
+#stage[data-layout^="co-"] #copy{top:74%;bottom:auto;left:3%;right:3%;width:auto;padding:clamp(18px,1.35vw,26px)}
+#stage[data-layout^="co-"] h1{font-size:clamp(32px,2.6vw,50px);line-height:1.08}
+#stage[data-layout^="co-"] #support{font-size:clamp(25px,1.8vw,35px);line-height:1.2;margin-top:12px}
+#stage[data-layout^="co-"] #support::before{margin-bottom:12px}
+#stage[data-layout^="co-"] #support:not([hidden]){animation:answer-reveal .45s ease-out}
+#stage[data-layout="co-video"] #copy{right:42%;top:73%}
+#stage[data-layout="co-question"] #copy{top:70%}
+#stage[data-layout="co-right"] #copy{left:57%;right:3%;top:8%}
+#commerce-start{position:absolute;z-index:7;bottom:4%;left:4%;padding:12px 20px;color:var(--white);background:var(--green);border:1px solid var(--gold);font-size:22px;min-height:46px}
+@media(min-width:701px) and (max-aspect-ratio:3/2){
+ #commerce-scene>img,#commerce-scene>video{object-fit:contain}
+ #stage[data-layout^="co-"] #copy{top:73%}
+ #stage[data-layout="co-right"] #copy{top:72%;left:3%}
+}
+@media(max-width:700px) and (orientation:portrait){
+ #commerce-scene>img,#commerce-scene>video{object-fit:contain}
+ #stage[data-layout^="co-"] #copy{top:49%;left:5%;right:5%;padding:20px}
+ #stage[data-layout^="co-"] h1{font-size:30px}
+ #stage[data-layout^="co-"] #support{font-size:23px}
+ #commerce-start{bottom:7%;font-size:19px}
+}
+@media(max-height:550px) and (orientation:landscape){
+ #commerce-scene>img,#commerce-scene>video{object-fit:contain}
+ #stage[data-layout^="co-"] #copy{top:67%;padding:10px 16px}
+ #stage[data-layout^="co-"] h1{font-size:25px}
+ #stage[data-layout^="co-"] #support{font-size:19px;margin-top:6px}
+ #stage[data-layout^="co-"] #support::before{margin-bottom:6px}
+ #stage[data-layout="co-right"] #copy{top:6%;left:58%;right:2%}
+ #stage[data-layout="co-video"] #copy{right:42%}
+ #stage[data-layout="co-question"] #copy{top:61%}
+ #commerce-start{bottom:2%;left:auto;right:3%;font-size:18px;padding:8px 12px}
+}

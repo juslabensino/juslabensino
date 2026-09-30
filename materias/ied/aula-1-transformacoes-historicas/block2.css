@@ -1,0 +1,83 @@
+/* Bloco 2 only: the approved first-block image and copy styles are untouched. */
+#chapters{flex-wrap:wrap;justify-content:flex-start;column-gap:18px;row-gap:0}
+#chapters button{min-height:28px}
+#stage[data-layout="b2-bottom"] #copy{left:4%;right:4%;width:auto;bottom:5%;padding:clamp(20px,2vw,34px)}
+#stage[data-layout="b2-bottom"] h1{font-size:clamp(36px,3.25vw,60px)}
+#stage[data-layout="b2-bottom"] #support{font-size:clamp(26px,2.2vw,38px);margin-top:14px}
+#stage[data-layout="b2-bottom"] #support::before{margin-bottom:14px}
+#history-montage{background:#b8b09c}
+.epoch-field{position:absolute;inset:0}
+.epoch{position:absolute;width:33%;height:86%;top:0;transition:transform 2.8s cubic-bezier(.25,.1,.25,1);overflow:visible}
+.epoch img{width:100%;height:160%;position:absolute;top:-25%;object-fit:cover;display:block;filter:brightness(1.2);mask-image:linear-gradient(90deg,transparent,#000 13%,#000 87%,transparent)}
+.epoch:nth-child(1){left:-6%;transform:translateY(12%)}
+.epoch:nth-child(2){left:14%;transform:translateY(6%)}
+.epoch:nth-child(3){left:34%;transform:translateY(0)}
+.epoch:nth-child(4){left:54%;transform:translateY(-6%)}
+.epoch:nth-child(5){left:74%;transform:translateY(-12%)}
+.epoch-labels{position:absolute;inset:0;z-index:3}
+.epoch-label{position:absolute;width:18%;padding:10px 4px;background:#164c50;color:var(--white);text-align:center;font-size:clamp(20px,1.9vw,34px);line-height:1.15;transition:top 2.8s cubic-bezier(.25,.1,.25,1)}
+.epoch-label:nth-child(1){left:2%;top:44%}
+.epoch-label:nth-child(2){left:21.5%;top:39%}
+.epoch-label:nth-child(3){left:41%;top:34%}
+.epoch-label:nth-child(4){left:60.5%;top:29%}
+.epoch-label:nth-child(5){left:80%;top:24%}
+#history-montage[data-state="open"] .epoch-label:nth-child(1){top:32%}
+#history-montage[data-state="open"] .epoch-label:nth-child(2){top:40%}
+#history-montage[data-state="open"] .epoch-label:nth-child(3){top:34%}
+#history-montage[data-state="open"] .epoch-label:nth-child(4){top:41%}
+#history-montage[data-state="open"] .epoch-label:nth-child(5){top:36%}
+.ladder-line{position:absolute;left:4%;top:1%;width:92%;height:40%;overflow:visible;opacity:.85;transition:opacity 1.5s}
+.ladder-line path{fill:none;stroke:#fff3cb;stroke-width:3;stroke-dasharray:5 6}
+.interpretation{position:absolute;top:7%;left:4%;padding:10px 16px;background:var(--paper);font-size:clamp(20px,1.7vw,30px)}
+#history-montage[data-state="open"] .epoch:nth-child(1){transform:translateY(-3%)}
+#history-montage[data-state="open"] .epoch:nth-child(2){transform:translateY(5%)}
+#history-montage[data-state="open"] .epoch:nth-child(3){transform:translateY(-2%)}
+#history-montage[data-state="open"] .epoch:nth-child(4){transform:translateY(6%)}
+#history-montage[data-state="open"] .epoch:nth-child(5){transform:translateY(0)}
+#history-montage[data-state="open"] .ladder-line,#history-montage[data-state="open"] .interpretation{opacity:0}
+#map-scene{background:radial-gradient(ellipse at 50% 20%,#f5f0df,#d6e2dc)}
+#map-lens{position:absolute;left:0;top:0;width:100%;height:77%;transform-origin:50% 50%}
+#world-map{width:100%;height:100%;overflow:visible}
+#world-land{fill:#759c8e;stroke:#426b5f;stroke-width:.6}
+#world-graticule{fill:none;stroke:#416b6425;stroke-width:1}
+#world-map circle{fill:#ac682a;stroke:#fff6db;stroke-width:3}
+#world-map text{fill:#164c50;font-family:Manrope,sans-serif;font-size:28px;paint-order:stroke;stroke:#f4efde;stroke-width:5px;stroke-linejoin:round}
+#scope-regions,#brazil-region{transition:opacity 1.3s}
+#brazil-region{opacity:0}
+#map-scene[data-state="world"] #scope-regions{opacity:.5}
+#map-scene[data-state="brazil"] #brazil-region{opacity:1}
+.map-caption{position:absolute;top:6%;left:4%;font-size:clamp(17px,1.4vw,24px);background:#f4efdeed;padding:8px 12px}
+#context-scribe{position:absolute;top:0;left:-14%;width:114%;height:100%;object-fit:cover;object-position:100% 50%}
+#stage[data-layout="b2-question"] #copy{top:7%;bottom:auto;left:auto;right:3%;width:40%;padding:clamp(22px,2vw,32px)}
+#stage[data-layout="b2-question"] h1{font-size:clamp(36px,3.05vw,56px)}
+#stage[data-layout="b2-question"] #support{font-size:clamp(26px,2.1vw,36px)}
+#stage[data-layout="b2-question"] #support:not([hidden]){animation:answer-reveal .4s ease-out both}
+#present-lens{position:absolute;left:6%;top:16%;width:45%;height:76%;border:3px solid #f5edcf;box-shadow:0 0 0 1px #164c5066;opacity:1;transition:opacity 1.5s,transform 1.8s;pointer-events:none}
+#present-lens span{position:absolute;bottom:0;left:0;padding:10px 18px;color:var(--green);background:var(--paper);font-size:clamp(20px,1.8vw,30px)}
+#context-scene:not([data-state="lens"]) #present-lens{opacity:0;transform:scale(1.12)}
+#stage[data-layout="b2-outro"] #copy{top:7%;bottom:auto;left:4%;width:70%}
+#stage[data-layout="b2-outro"] h1{font-size:clamp(36px,3.7vw,64px)}
+@media(max-width:700px) and (orientation:portrait){
+ #stage[data-block="2"][data-layout] #copy{left:5%;right:5%;top:49%;bottom:auto;width:auto;padding:22px}
+ #stage[data-block="2"] h1{font-size:32px}
+ #stage[data-block="2"] #support{font-size:23px;margin-top:14px}
+ .epoch{height:100%;width:40%}.epoch-label{font-size:14px;padding:6px 2px;overflow-wrap:anywhere}
+ .interpretation{font-size:15px;top:7%;padding:7px 10px}
+ .map-caption{font-size:12px;padding:6px;top:6%}
+ #map-lens{height:100%}
+ #context-scribe{object-fit:contain;left:0;width:100%}#present-lens{top:10%;height:80%;width:48%}
+ #present-lens span{font-size:14px;padding:6px}
+ #chapters{column-gap:6px}#chapters button{width:18%;font-size:9px;min-height:30px}
+}
+@media(max-height:550px) and (orientation:landscape){
+ #stage[data-block="2"] h1{font-size:30px}
+ #stage[data-block="2"] #support{font-size:21px;margin-top:10px}
+ #stage[data-block="2"] #support::before{margin-bottom:10px}
+ #stage[data-block="2"] #copy{padding:16px}
+ #stage[data-layout="b2-question"] #copy{width:44%;top:5%}
+ #stage[data-layout="b2-question"] h1{font-size:27px}
+ .epoch-label{font-size:18px}.interpretation{font-size:16px;top:6%}
+ .map-caption{font-size:13px;padding:5px}
+ #stage[data-layout="b2-outro"] #copy{width:75%}
+}
+@media(prefers-reduced-motion:reduce){.epoch,#present-lens{transition:none}}

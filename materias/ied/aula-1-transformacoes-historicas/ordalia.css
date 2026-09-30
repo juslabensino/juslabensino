@@ -1,0 +1,29 @@
+/* Only the new opening: existing scene geometry stays unchanged. */
+#ordalia-scene{background:var(--paper)}
+#ordalia-video,#ordalia-hold{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain;object-position:center}
+#stage[data-block="3"] #copy{top:8%;bottom:auto;left:auto;right:3%;width:42%;padding:clamp(22px,2.1vw,36px);transition:opacity .4s ease}
+#stage[data-block="3"] h1{font-size:clamp(36px,3.15vw,60px)}
+#stage[data-layout="b3-opening"] #copy{width:33%}
+#stage[data-layout="b3-opening"] h1{font-size:clamp(34px,2.8vw,54px)}
+#stage[data-layout="b3-title"] #copy{top:7%;left:4%;right:auto;width:70%}
+#stage[data-layout="b3-title"] h1{font-size:clamp(42px,4.6vw,80px)}
+#stage[data-layout="b3-title"] #support{font-size:clamp(28px,2.7vw,46px)}
+#stage[data-block="3"][data-ordalia-caption="hidden"] #copy{opacity:0!important;pointer-events:none}
+#ordalia-start{pointer-events:auto;background:none;color:var(--white);border:1px solid var(--gold);padding:10px 16px;margin-top:16px;min-height:44px;font-size:16px}
+@media(min-aspect-ratio:17/10) and (max-aspect-ratio:19/10){
+ #ordalia-video,#ordalia-hold{object-fit:cover}
+}
+@media(max-width:700px) and (orientation:portrait){
+ #stage[data-block="3"] #copy{left:5%;right:5%;top:49%;bottom:auto;width:auto;padding:22px}
+ #stage[data-block="3"] h1{font-size:32px}
+ #stage[data-layout="b3-title"] #support{font-size:26px}
+}
+@media(max-height:550px) and (orientation:landscape){
+ #stage[data-block="3"] #copy{top:5%;width:42%;padding:16px}
+ #stage[data-block="3"] h1{font-size:28px}
+ #stage[data-layout="b3-opening"] #copy{width:33%}
+ #stage[data-layout="b3-opening"] h1{font-size:24px}
+ #stage[data-layout="b3-title"] #copy{width:75%}
+ #stage[data-layout="b3-title"] #support{font-size:24px}
+ #ordalia-start{font-size:14px;min-height:36px;padding:6px 10px;margin-top:10px}
+}
